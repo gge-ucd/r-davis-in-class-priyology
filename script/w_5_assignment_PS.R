@@ -22,7 +22,7 @@ biggest_critters <- surveys %>%
   filter(!is.na(weight)) %>%
   group_by(species, sex) %>%
   arrange(sex, species, desc(weight)) %>%
-  summarize(max_weight = max(weight, na.rm = TRUE)) %>% View
+  summarize(max_weight = max(weight, na.rm = TRUE))
 
 
 ## Try to figure out where the NA weights are concentrated in the data- is there a particular species, taxa, plot, or whatever, where there are lots of NA values? There isn’t necessarily a right or wrong answer here, but manipulate surveys a few different ways to explore this. Maybe use tally and arrange 'here.
@@ -52,24 +52,27 @@ surveys %>%
 ## Take surveys, remove the rows where weight is NA and add a column that contains the average weight of each species+sex combination. Then get rid of all the columns except for species, sex, weight, and your new average weight column. Save this tibble as surveys_avg_weight. The resulting tibble should have 32,283 rows.
 
 surveys_avg_weight <- surveys %>%
-  select(species, sex, weight) %>% 
   filter(!is.na(weight)) %>%
+  filter(!is.na(sex)) %>%
   group_by(species, sex) %>% 
-  summarize (avg_weight = mean(weight, na.rm = TRUE)) %>% 
-  mutate(avg_weight) %>% 
-  arrange(species, sex, desc(avg_weight)) %>% View
+  mutate(avg_weight = mean(weight)) %>%
+  select(species, sex, weight, avg_weight)
+  
+
+surveys_avg_weight
 
 ## Challenge: Take surveys_avg_weight and add a new column called above_average that contains logical values stating whether or not a row’s weight is above average for its species+sex combination (recall the new column we made for this tibble).
 
-surveys_avg_weight %>% 
-  filter(!is.na(sex)) %>% View
+surveys_avg_weight %>%
+  mutate(above_average = is.logical(weight > avg_weight))
 
-%>%
-  select(species, sex, weight, avg_weight) 
-
-%>% 
-  mutate(above average = is.logical(avg_weight > weight)
-      
-    above_average = (weight > avg_weight)) %>% View
 
 ## Extra Challenge: Figure out what the scale function does, and add a column to surveys that has the scaled weight, by species. Then sort by this column and look at the relative biggest and smallest individuals. Do any of them stand out as particularly big or small?
+
+scaled_weighwt <- scale(surveys$weight)
+
+surveys_avg_weight %>%
+  mutate(scaled_weight = scale(weight)) %>% 
+  arrange(species, desc(scaled_weight)) 
+
+  
