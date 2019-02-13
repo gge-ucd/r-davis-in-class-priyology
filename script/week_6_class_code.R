@@ -46,5 +46,23 @@ ggplot(data = surveys_complete)
 ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point()
 
+# saving a plot object
+surveys_plot <- ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length))
 
+surveys_plot +
+  geom_point()
+
+## Challenge! try making a hexbin plot
+surveys_plot +
+  geom_hex()
+
+# we're going to build plots form the ground up
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length))
+
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point(alpha = 0.1)
+  
+
+##57:00
 
