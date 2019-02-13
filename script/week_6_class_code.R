@@ -59,10 +59,28 @@ surveys_plot +
 # we're going to build plots form the ground up
 ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length))
 
+
+# modifying whole geom appearances
 surveys_complete %>% 
   ggplot(aes(x = weight, y = hindfoot_length)) +
-  geom_point(alpha = 0.1)
+  geom_point(alpha = 0.1, color = "tomato")
   
+# using data in a geom
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point(alpha = 0.1, aes(color = species_id))
 
-##57:00
+#putting color as a global aesthetic
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length, color = species_id)) +
+  geom_point(alpha = 0.1)
 
+
+# using a little jitter
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length, color = species_id)) +
+  geom_jitter(alpha = 0.1)
+
+# move on to boxplots
+
+## 01:06:00
