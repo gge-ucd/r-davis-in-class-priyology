@@ -71,8 +71,11 @@ surveys_avg_weight %>%
 
 scaled_weighwt <- scale(surveys$weight)
 
-surveys_avg_weight %>%
-  mutate(scaled_weight = scale(weight)) %>% 
-  arrange(species, desc(scaled_weight)) 
+scaled_weight_sum <- surveys_avg_weight %>%
+  mutate(scaled_weight = scale(weight)) %>%
+  select(species, sex, weight, avg_weight, scaled_weight) %>% 
+  arrange(species, sex, weight, avg_weight, desc(scaled_weight)) 
+
+scaled_weight_sum
 
   
