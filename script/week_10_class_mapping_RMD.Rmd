@@ -1,0 +1,42 @@
+---
+title: "Week10_LiveCode_Mapping"
+author: "Priya Shukla"
+date: "March 16, 2019"
+output: html_document
+---
+
+```{r loadlibraries, eval = TRUE, echo = TRUE}
+library(rgdal); # spatial/shp reading
+library(dplyr); # wrangling data/plotting
+library(readr);
+library(viridis); # nice color palette
+library(sf); # newer "simple features" spatial package
+library(USAboundaries); # state/county data
+library(Imap); # nice mapping/color functions col.map
+library(ggrepel) # for labeling
+```
+
+![name_of_picture](purple_striped_jellyfish_2014_07_27_jackie_sones_small.jpg)
+
+Make a relative link!
+![my_photo](../figures/catherine-heath-1309997-unsplash.jpg)
+
+
+
+### add a photo from a different location than where the Rmd file is
+
+![myphoto]()
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
