@@ -11,6 +11,7 @@ weight_g
 
 #characters
 animals <- c("mouse", "rat", "dog", "cat")
+animals
 
 #vector exploration tools
 
@@ -28,6 +29,9 @@ class(animals)
 str(x)
 str(weight_g)
 str (animals)
+
+#Tab Complete
+ # R givues us a lot of options
 
 ## you can add values to a vector
 weight_g <- c(weight_g, 105) #if you run this line multiple times, it will add the value multiple times
@@ -59,6 +63,7 @@ char_logical <- c("a", "b", "c", TRUE)
 typeof(char_logical)
 
 tricky <- c("a", "b", "c", TRUE)
+class(tricky)
 
 combined_logical <- c(num_logical, char_logical)
 combined_logical
